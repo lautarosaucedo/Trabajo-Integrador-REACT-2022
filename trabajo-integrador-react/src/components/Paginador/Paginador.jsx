@@ -5,11 +5,13 @@ import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const Paginador = () => {
+const Paginador = (
+  cantidadPaginas
+) => {
   return (
     <Stack spacing={2}>
       <Pagination
-        count={10}
+        count={cantidadPaginas}
         renderItem={(item) => (
           <PaginationItem
             slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}

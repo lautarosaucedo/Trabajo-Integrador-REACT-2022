@@ -3,8 +3,9 @@ import { useState } from "react";
 import Buscador from "../components/Buscador/Buscador";
 import Loading from "../components/Loading/Loading";
 import{ ListaNoticias } from "../components/Noticias/Noticias";
+import Paginador from "../components/Paginador/Paginador";
 
-import { getListaNoticias } from "../Servicios/Noticias";
+import { getListaNoticias} from "../Servicios/Noticias";
 
 
 const PaginaBuscador = () => {
@@ -12,19 +13,25 @@ const PaginaBuscador = () => {
     const [noticias, setNoticias] = useState();
     //estado de louding
     const [isLoading, setIsLoading] = useState(false);
+    //estado interno de totalResult
+    const[cantidadPaginas, setCantidadPaginas] = useState(1);
+   //nuevo estado de la pagina actual por defaul es 1
+   const [paginaAactual, setPaginaActual] = useState(1);
 
     const onBuscar = async (criterioBusqueda) => {
         setIsLoading(true);
-        const { Search : noti } = await getListaNoticias(criterioBusqueda);
+        const { Search : noti, totalResults} = await getListaNoticias(criterioBusqueda, paginaAactual);
         setNoticias(noti);
+        setCantidadPaginas(Math.ceil(parseInt(totalResults)/10))
         setIsLoading(false);
-        console.log(noticias);
+        
+       
     };
     console.log(noticias);
     if(isLoading){
         return (<Container maxWidth='sm'>
-                <Loading/>
-        </Container>
+                    <Loading/>
+                </Container>
         )
     }
     return (
@@ -33,7 +40,8 @@ const PaginaBuscador = () => {
             
             <Buscador onBuscar={onBuscar} />
             
-            <ListaNoticias /> 
+            {noticias && < ListaNoticias />} 
+            {noticias && <Paginador cantidadPaginas = {cantidadPaginas}/> }
            
         </Container>
             
