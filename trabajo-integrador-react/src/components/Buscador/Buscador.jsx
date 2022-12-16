@@ -3,7 +3,6 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import { useState } from "react";
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
 
@@ -13,35 +12,37 @@ const Buscador = ({onBuscar}) => {
   
   return (
     <Paper
-      component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+      component="div"
+      sx={{ p: '3px 5px', display: 'flex', alignItems: 'center', width: 400, marginTop:10 }}
     >
-      <IconButton sx={{ p: '10px' }} aria-label="menu">
-        <MenuIcon />
-      </IconButton>
+      
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Search Google Maps"
-        inputProps={{ 'aria-label': 'search google maps' }}
-        //
+        placeholder="Buscar Noticias"
+        inputProps={{ 'aria-label': 'Buscar Noticias' }}
         value={criterioBusqueda}
-        onChange={(e) => {
+        role="searchbox"
+        onChange={(e) => { 
           setCriterioBusqueda(e.target.value)
-        } }
+        }}
       />
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search"
-        //escucga un evenntp, es el metodo de conectar con la paginaBuscador
+      
+      <IconButton
+        type="button"
+        sx={{ p: '10px' }}
+        aria-label="search"
         onClick={() => {
           if(criterioBusqueda.length > 2) {
             onBuscar(criterioBusqueda)
           }
         }}
+        role="button"
       >
         <SearchIcon />
       </IconButton>
 
     </Paper>
   );
-}
+};
 
 export default Buscador

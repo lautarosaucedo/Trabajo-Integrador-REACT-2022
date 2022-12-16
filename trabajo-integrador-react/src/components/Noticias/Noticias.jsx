@@ -6,25 +6,37 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { DEFAULT_IMAGE, NA } from '../../libs/constantes';
+
+
+
+
+
+
+
+
+
 const Noticias = ({
-  noticias
+  noticia
 }) => {
-  console.log(noticias);
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image={noticias.urlToImage === NA ? DEFAULT_IMAGE : noticias.urlToImage}
-        alt={noticias.title}
+        image={noticia.urlToImage === NA ? DEFAULT_IMAGE : noticia.urlToImage}
+        
       />
       <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+          {noticia.title}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {noticias.description}
+          {noticia.description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
+        <Button size="small" href={noticia.url}>Ver más</Button>
       </CardActions>
     </Card>
   );
@@ -32,12 +44,24 @@ const Noticias = ({
 
 export const ListaNoticias = ({ noticias }) => {
   return (
-        noticias?.map((noticia) => {
-          return <Noticias noticia = {noticia}/>
+    <section style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginTop: '20px',
+    }}>
+      {
+        noticias.map((noticia) => {
+          return <Noticias noticia = {noticia} />
       })
-      
+      }
+    </section>
   )
 }
 
 
 export default Noticias;
+
+
+

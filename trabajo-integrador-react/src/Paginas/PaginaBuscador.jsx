@@ -4,8 +4,8 @@ import Buscador from "../components/Buscador/Buscador";
 import Loading from "../components/Loading/Loading";
 import{ ListaNoticias } from "../components/Noticias/Noticias";
 import Paginador from "../components/Paginador/Paginador";
+import { getListaNoticias } from "../Servicios/Noticias";
 
-import { getListaNoticias} from "../Servicios/Noticias";
 
 
 const PaginaBuscador = () => {
@@ -15,33 +15,30 @@ const PaginaBuscador = () => {
     const [isLoading, setIsLoading] = useState(false);
     //estado interno de totalResult
     const[cantidadPaginas, setCantidadPaginas] = useState(1);
-   //nuevo estado de la pagina actual por defaul es 1
-   const [paginaAactual, setPaginaActual] = useState(1);
+    const [criterioBusqueda, setCriterioBusqueda] = useState('');
 
-    const onBuscar = async (criterioBusqueda) => {
+    const onBuscar = async (criterioBusqueda, pagina=1) => {
         setIsLoading(true);
-        const { Search : noti, totalResults} = await getListaNoticias(criterioBusqueda, paginaAactual);
+        const { articles : noti, totalResults } = await getListaNoticias(criterioBusqueda, pagina);
+        setCriterioBusqueda(criterioBusqueda);
         setNoticias(noti);
-        setCantidadPaginas(Math.ceil(parseInt(totalResults)/10))
+        setCantidadPaginas(Math.ceil(parseInt(totalResults)/10));
         setIsLoading(false);
-        
-       
     };
-    console.log(noticias);
-    if(isLoading){
-        return (<Container maxWidth='sm'>
-                    <Loading/>
-                </Container>
-        )
-    }
+
+    const onCambioPagina = (pagina) => {        
+        onBuscar(criterioBusqueda, pagina);
+    };
+
+
     return (
         //metodo onBuscar se encarga de conectar la pagina padre con el hijo(paginabuscador con buscador)
         <Container maxWidth='sm'>
-            
+           
             <Buscador onBuscar={onBuscar} />
-            
-            {noticias && < ListaNoticias />} 
-            {noticias && <Paginador cantidadPaginas = {cantidadPaginas}/> }
+            {isLoading && <Loading /> }
+            {noticias && < ListaNoticias noticias={noticias}/>} 
+            {noticias && < Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina}/>}
            
         </Container>
             

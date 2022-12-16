@@ -1,28 +1,23 @@
-import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import Stack from '@mui/material/Stack';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Pagination } from "@mui/material"
 
-const Paginador = (
-  cantidadPaginas
-) => {
-  return (
-    <Stack spacing={2}>
-      <Pagination
-        count={cantidadPaginas}
-        renderItem={(item) => (
-          <PaginationItem
-            slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-            {...item}
-          />
-        )}
-      />
-    </Stack>
-  );
+const Paginador = ({
+    cantidadPaginas,
+    onChange
+}) => {
+    const cambiaPagina = (_evento, pagina) => {
+        onChange(pagina);
+    };
+    return (
+      
+        <Pagination
+            count={cantidadPaginas}
+            color="secondary"
+            onChange={cambiaPagina}
+        />
+    );
 }
 
-
-
 export default Paginador;
+
+
+
