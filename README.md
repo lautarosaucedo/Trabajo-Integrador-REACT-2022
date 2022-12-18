@@ -1,7 +1,6 @@
-# Trabajo-Integrador-REACT-2022
+## Trabajo-Integrador-REACT-2022
 
-Buscador de noticias con api de newsapi implementado en React.
-Para ver su funcionamiento completo y estructura levantarlo desde local
+### Buscador de noticias ###
 
 
 ## Correr proyecto desde local
