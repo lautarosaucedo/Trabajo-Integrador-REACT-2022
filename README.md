@@ -1,7 +1,6 @@
-## Trabajo-Integrador-REACT-2022
+# Trabajo-Integrador-REACT-2022
 
-### Buscador de noticias ###
-
+## Buscador de noticias 
 
 ## Correr proyecto desde local
 
