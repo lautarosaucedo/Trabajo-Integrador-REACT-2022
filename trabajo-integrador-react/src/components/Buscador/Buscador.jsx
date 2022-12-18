@@ -4,7 +4,7 @@ import InputBase from '@mui/material/InputBase';
 import { useState } from "react";
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-
+import './Buscador.css';
 
 const Buscador = ({onBuscar}) => {
   //el estado de busqueda va ser interdo de el hijo buscador
@@ -12,12 +12,14 @@ const Buscador = ({onBuscar}) => {
   
   return (
     <Paper
+      className='style'
       component="div"
-      sx={{ p: '3px 5px', display: 'flex', alignItems: 'center', width: 400, marginTop:10 }}
+      sx={{ p: '10px 15px', display: 'flex', alignItems: 'center', width: 520, marginTop:10, }}
     >
       
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 5, flex: 5}}
+        font-size="large"
         placeholder="Buscar Noticias"
         inputProps={{ 'aria-label': 'Buscar Noticias' }}
         value={criterioBusqueda}
@@ -25,6 +27,7 @@ const Buscador = ({onBuscar}) => {
         onChange={(e) => { 
           setCriterioBusqueda(e.target.value)
         }}
+        
       />
       
       <IconButton
