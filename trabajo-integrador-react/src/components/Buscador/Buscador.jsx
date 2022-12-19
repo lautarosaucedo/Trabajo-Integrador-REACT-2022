@@ -12,7 +12,7 @@ const Buscador = ({onBuscar}) => {
   
   return (
     <Paper
-      className='style'
+     
       component="div"
       sx={{ p: '10px 15px', display: 'flex', alignItems: 'center', width: 520, marginTop:10, }}
     >

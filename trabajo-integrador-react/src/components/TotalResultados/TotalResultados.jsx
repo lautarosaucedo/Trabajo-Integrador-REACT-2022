@@ -1,4 +1,4 @@
-
+import './TotalResultados.css'
 
 export const TotalResultados = ({
     result,
@@ -6,9 +6,10 @@ export const TotalResultados = ({
 })=>{
     
     return(
-       <div>
-        Está viendo: 10 noticias en {cantidadPaginas} paginas de {result}  resultados
-        </div>
+       <section className="style"  >
+        
+        <b >Está viendo: 10 noticias en {cantidadPaginas} paginas de {result}  resultados</b> 
+        </section>
     )
 }
 

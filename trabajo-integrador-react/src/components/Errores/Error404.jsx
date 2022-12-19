@@ -1,4 +1,12 @@
 
-const Error404 = () => <div> esta pagina no existe </div>;
+
+import './Error404.css'
+
+const Error404 = () => { 
+    return (    <body className='error'>
+
+                </body>
+    );
+}
 
 export default Error404;

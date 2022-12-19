@@ -20,7 +20,7 @@ export const Navbar = () => {
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}
           >
             
-            <Avatar alt="Remy Sharp" src="https://cdn-icons-png.flaticon.com/512/21/21601.png" />
+            <Avatar href={"/"} alt="Remy Sharp" src="https://cdn-icons-png.flaticon.com/512/21/21601.png" />
            
           </IconButton>
           <Typography variant="h6"  color="inherit" component="div" class="navbar">

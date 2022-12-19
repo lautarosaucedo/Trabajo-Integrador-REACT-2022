@@ -19,19 +19,22 @@ const PaginaBuscador = () => {
     const[cantidadPaginas, setCantidadPaginas] = useState(1);
     const [criterioBusqueda, setCriterioBusqueda] = useState('');
     const [result, setResult] = useState(1);
+    
 
     const onBuscar = async (criterioBusqueda, pagina=1) => {
         setIsLoading(true);
         const { articles : noti, totalResults} = await getListaNoticias(criterioBusqueda, pagina);
+       
         setCriterioBusqueda(criterioBusqueda);
         setNoticias(noti);
+     
         setResult(totalResults);
         setCantidadPaginas(Math.ceil(parseInt(totalResults)/10));
         setIsLoading(false);
        
     };
  
-
+    
     const onCambioPagina = (pagina) => {        
         onBuscar(criterioBusqueda, pagina);
     };
