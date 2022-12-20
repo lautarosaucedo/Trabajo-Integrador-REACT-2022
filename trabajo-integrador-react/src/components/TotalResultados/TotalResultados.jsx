@@ -8,7 +8,7 @@ export const TotalResultados = ({
     return(
        <section className="style"  >
         
-        <b >Está viendo: 10 noticias en {cantidadPaginas} paginas de {result}  resultados</b> 
+        <b className="style" >Está viendo: 10 noticias en {cantidadPaginas} paginas de {result}  resultados</b> 
         </section>
     )
 }
